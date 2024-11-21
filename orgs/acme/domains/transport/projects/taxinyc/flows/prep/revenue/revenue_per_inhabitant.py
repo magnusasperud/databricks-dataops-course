@@ -73,6 +73,7 @@ revenue_per_inhabitant_df = (
     .withColumn("revenue_per_inhabitant", F.round(
         revenue_by_borough_df.amount / borough_population_df.population, 2)
     )
+    .withColumnRenamed("amount", "rounded_amount")
     .sort("revenue_per_inhabitant", ascending=False)
 )
 revenue_per_inhabitant_df.display()
